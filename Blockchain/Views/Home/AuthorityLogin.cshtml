@@ -1,0 +1,19 @@
+﻿@using Blockchain.Models;
+
+@model AuthorityLoginModel 
+ 
+    <div class="logreg-container">
+        <h1>Prijava administratora: </h1>
+        <br />
+        @using (Html.BeginForm("AuthorityLogin", "Home", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label for="AuthorityUserLoginKey">Lozinka: </label>
+                <input name="AuthorityUserLoginKey" type="text" class="form-control" placeholder="Molimo unesite svoju dodijeljenu lozinku" value="" />
+            </div>
+            <span style="color: red;" asp-validation-for="AuthorityUserLoginKey"></span>
+            <div class="form-group" style="width: 25%; margin: 0 auto;">
+                <input type="submit" class="btn btn-success" value="Prijavite se" />
+            </div>
+        }
+    </div>

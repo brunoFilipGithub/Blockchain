@@ -1,0 +1,63 @@
+﻿@using Blockchain.Models
+
+@model UserRegisterModel
+
+    <div class="logreg-container">
+        <h1>Registracija: </h1>
+        <div class="warning-message-div">
+            <p><b>Zabranjena registracija tuđim OIB-om</b></p>
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @using (Html.BeginForm("UserRegister", "Home", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label for="OIB">OIB: </label>
+                <input name="OIB" type="text" class="form-control" placeholder="Molimo unesite svoj OIB ovdje" value="" />
+                <span style="color: red;" asp-validation-for="OIB"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Email">E - mail: </label>
+                <input name="Email" type="text" class="form-control" placeholder="Molimo ovdje unesite svoju e - mail adresu" value="" />
+                <span style="color: red;" asp-validation-for="Email"></span>
+            </div>
+
+            <div class="form-group" style="width: 25%; margin: 0 auto;">
+                <input type="submit" data-toggle="modal" data-target="#registerComeplete" class="btn btn-success" onclick="timeoutAndRedirect()" value="Registriraj se" />
+            </div>
+        }
+    </div>
+
+<div class="modal fade" id="registerComeplete" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true" style="margin-top: 10%">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    Registracija
+                </h5>
+
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">
+                        ×
+                    </span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                Vaš jedinstveni ključ za prijavu Vam je poslan na vašu e - mail adresu!
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function timeoutAndRedirect() {
+        setTimeout(function () { window.location.href = "https://localhost:44309/"; }, 4000);
+    }
+</script>

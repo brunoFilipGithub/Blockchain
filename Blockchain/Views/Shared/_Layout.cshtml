@@ -1,0 +1,82 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using Blockchain.Blockchain;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Blockchain</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/Land.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="white-space: nowrap;">Mapa zemljišta</a>
+                @{if (Context.Session.IsUserLoggedIn())
+                    {
+                        if (Context.Session.IsUserAuthority())
+                        {
+                            <h1 class="navbar-brand" style="color: red;">Vaš ID: @((Context.Session.GetObjectFromJson<AuthorityUser>("loggedUser")).authorityUserLoginKeyHash) </h1>
+                        }
+                        else
+                        {
+                            <h1 class="navbar-brand">Vaš OIB: @((Context.Session.GetObjectFromJson<User>("loggedUser")).OIB)</h1>
+                        }
+                    }
+                }
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            @{if (Context.Session.IsUserLoggedIn() == false)
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="UserLogin" style="white-space: nowrap;">Prijava</a>
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="UserRegister" style="white-space: nowrap;">Registracija</a>
+                }
+                else
+                {
+                    if (Context.Session.IsUserAuthority())
+                    {
+                        if (Helper.VoteNeedingTransactionsCount(@Context.Session.GetObjectFromJson<AuthorityUser>("loggedUser").authorityUserLoginKeyHash) != 0)
+                        {
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="SignedTransactionsList" style="color: red; white-space: nowrap;">Potvrđene transakcije</a>
+                        }
+                    }
+                    else
+                    {
+                        if ((Context.Session.GetRequestsForLoggedUser() != null))
+                        {
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="RequestsList" style="color: red; white-space: nowrap;">Zahtjevi</a>
+                        }
+                    }
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="LogOut"  style="white-space: nowrap;">Odjava</a>
+                }
+            }
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - 
+        
+        @if (Context.Session.IsUserLoggedIn() == false)
+        {
+            <a asp-area="" asp-controller="Home" asp-action="AuthorityLogin">Nadležna tijela</a>
+        }
+        </div>
+    </footer>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

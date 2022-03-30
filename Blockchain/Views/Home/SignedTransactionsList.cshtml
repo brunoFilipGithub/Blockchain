@@ -1,0 +1,53 @@
+﻿@using Blockchain.Blockchain
+
+@model List<LandTransaction>
+
+<div class="text-center">
+    <h1 class="display-4">Zahtjevi za prijenos vlasništva zemljišta:</h1>
+</div>
+
+<br />
+
+<table class="table" style="margin-top: 5%">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Br. zemlje</th>
+            <th>Vlasnik</th>
+            <th>Korisnik koji traži prijenos</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@(i+1)</td>
+                <td><b style="color: green">@Model.ElementAt(i).landId</b></td>
+                <td>@Model.ElementAt(i).landOwnerHash</td>
+                <td>@Model.ElementAt(i).landRequesterHash</td>
+                <td><button class="btn btn-warning" style="width: 100%;" onclick="addTransactionToBlockhain('@Model.ElementAt(i).transactionHash')"> <b>Dodaj glas</b> </button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<br />
+
+
+<script>
+    function addTransactionToBlockhain(trHash) {
+        console.log(trHash);
+    
+        $.ajax({
+            type: 'POST',
+            url: '/Home/AddVoteForPendingTransaction',
+            data: { transactionHash: trHash },
+            success: function (response) {
+                console.log("OKK");
+                window.location.href = "https://localhost:44309/";
+            }
+        });
+    }
+
+</script>

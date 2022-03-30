@@ -1,0 +1,147 @@
+﻿ @{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Mapa zemljišta</h1>
+</div>
+
+
+<div class="svg-container">
+    <svg class="svg-class" viewBox="0 0 1100 500" preserveAspectRatio="none">
+        <polygon data-toggle="modal" data-target="#landModal" id="A1" class="land" points="20,10 100,30 100,100 0,100" style="fill:green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A2" class="land" points="100,30 180,20 180,110 100,110" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A3" class="land" points="0,100 100,100 100,220 30,220" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A4" class="land" points="180,20 230,10 230,100 180,100" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A5" class="land" points="230,20 400,40 420,100 230,100" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A6" class="land" points="100,110 180,110 180,250 100,270" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A7" class="land" points="100,270 180,250 270,250 270,280 100,280" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A8" class="land" points="180,100 290,100 310,180 180,180" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A9" class="land" points="180,180 310,180 330,250 180,250" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A10" class="land" points="290,100 380,100 380,250 330,250" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A11" class="land" points="100,280 400,280 420,370 150,340" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A12" class="land" points="270,250 470,250 470,280 270,280" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A13" class="land" points="380,100 570,100 570,250 380,250" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A14" class="land" points="400,40 650,30 680,100 420,100" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A15" class="land" points="650,30 800,30 800,100 680,100" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A16" class="land" points="800,30 980,80 1000,180 800,200" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A17" class="land" points="1000,180 1050,290 820,290 800,200" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A18" class="land" points="1050,290 1010,400 740,380 820,290" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A19" class="land" points="1010,400 1030,440 970,470 740,470 740,380" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A20" class="land" points="740,470 550,470 550,300 740,300" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A21" class="land" points="740,380 740,100 800,100 820,290" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A22" class="land" points="550,470 420,370 400,280 550,280" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A23" class="land" points="470,250 570,250 740,300 550,300 550,280 470,280" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A24" class="land" points="570,250 570,100 740,100 740,300" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+        <polygon data-toggle="modal" data-target="#landModal" id="A25" class="land" points="550,470 420,370 150,340 230,430" style="fill: green;stroke:rgb(5, 66, 77);stroke-width:3" />
+    </svg>
+</div>
+
+<div class="modal fade" id="landModal" tabindex="-1" aria-labelledby="landModalLabel" aria-hidden="true" style="margin-top: 10%">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title"
+                    id="landHeader">
+                </h5>
+
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">
+                        ×
+                    </span>
+                </button>
+            </div>
+
+            <div class="modal-body" id="landBody">
+
+            </div>
+
+            @if (Context.Session.IsUserLoggedIn() && Context.Session.IsUserAuthority() == false)
+            {
+                <div class="modal-footer" id="landFooter">
+                    <button type="button"
+                            class="btn btn-success btn-sm"
+                            id="viewLandButton">
+                        Pogledaj zemlju
+                    </button>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+<script>
+    var landsListJSON;
+    var selectedLand;
+    var windowLocation;
+
+
+    function initLandsList() {
+        $.ajax({
+            url: "Home/GetLatestLandDataJson",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                landsListJSON = data;
+                console.log(landsListJSON);
+            }
+        });
+    }
+
+    function sendLandRequest() {
+        console.log(JSON.stringify(selectedLand.points[0]));
+
+
+        $.ajax({
+            type: 'POST',
+            data: selectedLand, // #2
+            url: '/Home/SendLandToServer',
+            success: function (response) {
+                window.location.href = response.url;
+            }
+        });
+    }
+
+    $(document).ready(function () {
+
+        let viewLandButton = document.getElementById("viewLandButton");
+        windowLocation = window.location.href;
+
+        initLandsList();
+
+
+        $('polygon').click(function () {
+
+            let id = $(this).attr('id');
+            let points = $(this).attr('points');
+
+            for (let a = 0; a < Object.keys(landsListJSON).length; a++) {
+                if (landsListJSON[a].landId == id) {
+                    selectedLand = new Land(landsListJSON[a].landId, landsListJSON[a].landOwnerHash, landsListJSON[a].location, points, null);
+                }
+            }
+
+
+            var landId = selectedLand.landId;
+            var location = selectedLand.location;
+
+            $("#landHeader").html("Zemljište " + landId);
+            $("#landBody").html("Adresa: " + landId + "<br /> Lokacija: " + location);
+        });
+
+        if (viewLandButton != null) {
+            viewLandButton.addEventListener("click", function () {
+
+                sendLandRequest();
+
+            });
+        }
+
+    });
+</script>

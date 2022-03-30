@@ -1,0 +1,5 @@
+U datoteci "authoritzUserPassword.txt" nalaze se lozinke
+za prijavu korisnika nadležnih tijela.
+
+U datoteci "userLoginKeys.txt" nalaze se ključevi za prijavu korisnika u aplikaciju,
+a pored njih hash tog korisnika.

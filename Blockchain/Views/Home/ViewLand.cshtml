@@ -1,0 +1,118 @@
+﻿@using Blockchain.Blockchain
+@model LandModel
+
+<br />
+
+<div class="land-info">
+
+<h1 style="text-align: center;">Zemlja @Model.landId</h1>
+
+
+    @if (Context.Session.GetLoggedUserHash() == Model.landOwnerHash)
+    {
+        <br />
+        <p style="text-align: center;">Vlasnik: @Model.landOwnerHash <b>Vi</b></p>
+    }
+    else
+    {
+        @if (Helper.DoesLandRequestExist(Model))
+        {
+            <br />
+            <p style="text-align: center;">Vlasnik: <b>@Model.landOwnerHash</b></p>
+            <br />
+            <p>Poslali ste zahtjev za prijenos zemlje <b>@Model.landId</b> njenom vlasniku. Pričekajte da Vam vlasnik zemlje odgovori.</p>
+        }
+        else
+        {
+            <br />
+            <p style="text-align: center;">Vlasnik: <b>@Model.landOwnerHash</b></p>
+
+            <div class="land-view-buttons row">
+                <button class="btn btn-success" id="sendRequestButton">Pošalji zahtjev</button>
+                <button class="btn btn-danger" id="cancleButton">Odustani</button>
+            </div>
+
+        }
+    }
+</div>
+
+<div class="view-land-container">
+    <div class="view-land">
+        <svg id="landSvg">
+
+        </svg>
+    </div>
+</div>
+
+<br />
+
+<div style="width:50%; min-width: 700px; margin: 0 auto;">
+    <button class="btn btn-warning" onclick="back()" style="width: 50%; display: block; margin: 0 auto;"> <b>Povratak </b></button>
+</div>
+
+<script>
+
+    var land;
+
+    function back() {
+        window.location.href = "https://localhost:44309/";
+    }
+
+    function InitializePolygon() {
+
+        var svg = document.getElementById("landSvg");
+        var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+        polygon.setAttribute("style", "fill: green; stroke: rgb(5, 66, 77); stroke - width: 3");
+        svg.appendChild(polygon);
+
+        var landPoints = land.points.split(" ");
+
+        for (let a = 0; a < landPoints.length; a++) {
+
+            var point = svg.createSVGPoint();
+            landPointCurrent = landPoints[a].split(",");
+
+            point.x = parseInt(landPointCurrent[0]);
+            point.y = parseInt(landPointCurrent[1]);
+            console.log(point.x);
+            console.log(point.y);
+
+            polygon.points.appendItem(point);
+        }
+
+        console.log(polygon.points);
+    }
+
+    function InitializeLand() {
+        var obj = @Html.Raw(Json.Serialize(Model));
+
+        land = new Land(obj.landId, obj.landOwnerHash, obj.location, obj.points, obj.landRequesterHash);
+        console.log(land);
+
+        InitializePolygon();
+    }
+
+    $(document).ready(function () {
+
+        InitializeLand();
+
+        document.getElementById("sendRequestButton").addEventListener("click", SendRequest, false);
+
+        function SendRequest() {
+            $.ajax({
+                type: 'POST',
+                data: land, // #2
+                url: '/Home/SendRequest',
+                success: function (response) {
+                    window.location.reload();
+                }
+            });
+        }
+
+        document.getElementById("cancleButton").addEventListener("click", Cancle, false);
+        function Cancle() {
+            window.location.href = "https://localhost:44309/";
+        }
+    })
+
+</script>

@@ -1,0 +1,60 @@
+﻿@using Blockchain.Blockchain
+
+@model List<LandTransaction>
+
+<div class="text-center">
+    <h1 class="display-4">Zahtjevi za prijenos vlasništva zemljišta:</h1>
+</div>
+
+
+<table class="table" style="margin-top: 5%">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Br. zemlje</th>
+            <th>Korisnik koji traži prijenos</th>
+            <th>Prihvati</th>
+            <th>Odbij</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+        <tr>
+            <th>@(i+1)</th>
+            <td><b style="color: green">@Model.ElementAt(i).landId</b></td>
+            <td>@Model.ElementAt(i).landRequesterHash</td>
+            <td><button onclick="sendTransferAnswer('@Model.ElementAt(i).transactionHash')" class="btn btn-success">Da</button></td>
+            <td><button onclick="declineTransferAnswer('@Model.ElementAt(i).transactionHash')" class="btn btn-danger">Ne</button></td>
+        </tr>
+        }
+    </tbody>
+</table> 
+
+<script>
+    function sendTransferAnswer(trHash) {
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/AcceptLandTransaction',
+            data: { transactionHash: trHash }, // #2
+            success: function (response) {
+                window.location.href = "https://localhost:44309/";
+            }
+        });
+    }
+
+    function declineTransferAnswer(trHash) { 
+        console.log(trHash)
+
+        $.ajax({
+            type: 'POST',
+            url: '/Home/DeclineLandTransaction',
+            data: { transactionHash: trHash }, // #2
+            success: function (response) {
+                window.location.href = "https://localhost:44309/";
+            }
+        });
+    }
+
+</script>

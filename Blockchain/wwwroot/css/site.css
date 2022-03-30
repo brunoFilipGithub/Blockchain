@@ -1,0 +1,167 @@
+﻿td, th, tr {
+    border: 2px solid #1c87c9;
+}
+
+.warning-message-div {
+    width: 80%;
+    height: auto;
+    border: 3px solid black;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 auto;
+    display:block;
+    background-color: orange;
+}
+
+.land-view-buttons button {
+    margin-left: 3%;
+    width: 43%;
+    display: inline-block;
+}
+
+.land-view-buttons {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#landSvg {
+    float: left;
+    overflow: visible;
+    height: 100%
+}
+
+.view-land-container {
+    margin-top: 1%;
+    border: 3px solid rgb(5, 66, 77);
+    border-radius: 5px;
+    background-color: burlywood;
+    width: inherit;
+    min-width: 700px;
+}
+
+.view-land {
+    width: 20%;
+    height: 295px;
+    margin: 0 auto;
+    margin-top: 1%;
+}
+
+.land-info {
+    text-align: center;
+    padding: 2%;
+    border: 3px solid rgb(5, 66, 77);
+    border-radius: 5px;
+    min-width: 700px;
+}
+
+.center-container {
+    width: 65%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.logreg-container {
+    border: 2px solid black;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 20%;
+    padding: 2%;
+    position: relative;
+}
+
+.land:hover {
+    fill: black !important;
+}
+
+.svg-class {
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    width: 100%;
+    height: 100%
+}
+
+.svg-container-view-land {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.svg-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 500px;
+    margin-top: 4%;
+}
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  height: 100%;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
